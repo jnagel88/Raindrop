@@ -1,13 +1,25 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-1">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="well">
+			<h2>Lookup History</h2>
+			<div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
         <div class="well">
-	    <h1>Look Up Your Local Forecast</h1>
+	    <h2>Look Up Your Local Forecast</h2>
 	    <p>What's the weather like in your city?</p>
 	    <div>
                 <%= form_tag root_path do %>
 		    <%= text_field_tag :city, nil, placeholder: "City", class: "form-control" %><br />
 		    <%= select_tag :state, options_for_select(@states), prompt: "Please select" %><br />
-		    <%= submit_tag "Check Weather", class: "btn btn-primary" %>
+		    <%= submit_tag "Check Weather", class: "btn btn-primary", style: "margin-top: 20px" %>
 		<% end %>
 	    </div>
 	</div>
@@ -16,7 +28,7 @@
 
 <!-- Our response from wunderground's API -->
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-4 col-md-offset-4">
     <div class="well">
 
 <!-- Bring in the instance variable from our controller to display on our index page. -->
@@ -46,7 +58,7 @@
 
      <% else %>
      
-     <p>Error: Please enter a valid request. <%= @error %> </p> 
+     <p>No city selected. Please enter a city above. <%= @error %> </p> 
 <% end %>
     </div>
   </div>
