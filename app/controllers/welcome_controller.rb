@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
   def index
 
     @history = History.all.uniq
-    
+
     # Creates an array of states that our user can choose from on our index page
     @states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK 
      TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY 
@@ -53,5 +53,10 @@ class WelcomeController < ApplicationController
         @error = results['response']['error']['description']
       end
     end
+  end
+
+  def create
+    lookup = History.create(city: :city,state: :state )
+    redirect_to root_path
   end
 end

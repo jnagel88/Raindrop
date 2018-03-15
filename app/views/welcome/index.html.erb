@@ -3,7 +3,10 @@
 		<div class="well">
 			<h2>Lookup History</h2>
 			<div>
-				
+				<% @history.each do |city| %>
+				<p><%= city.city %>, <%= city.state %></p>
+
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -16,7 +19,7 @@
 	    <h2>Look Up Your Local Forecast</h2>
 	    <p>What's the weather like in your city?</p>
 	    <div>
-                <%= form_tag root_path do %>
+                <%= form_tag create_path do %>
 		    <%= text_field_tag :city, nil, placeholder: "City", class: "form-control" %><br />
 		    <%= select_tag :state, options_for_select(@states), prompt: "Please select" %><br />
 		    <%= submit_tag "Check Weather", class: "btn btn-primary", style: "margin-top: 20px" %>
@@ -55,11 +58,12 @@
 	  </p>
         </div>
       </div>
-
+      <% form_tag hist %>
      <% else %>
      
      <p>No city selected. Please enter a city above. <%= @error %> </p> 
 <% end %>
+
     </div>
   </div>
 </div>
